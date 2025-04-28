@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      clean_arch_generator|clean_arch_generator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**.dart
+
+builders:
+  clean_arch_generator:
+    target: ":clean_arch_generator"
+    import: "package:clean_arch_generator/clean_arch_generator.dart"
+    builder_factories: ["cleanArchGenerator"]
+    build_extensions: {".dart": [".g.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]
