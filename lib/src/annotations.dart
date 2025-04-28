@@ -1,9 +1,11 @@
-library clean_archx;
+library clean_archx.annotations;
 
+/// Entity sınıfı oluşturmak için kullanılır
 class Entity {
   const Entity();
 }
 
+/// Repository katmanı oluşturmak için kullanılır
 class Repository {
   final String methodName;
   final String paramName;
@@ -16,6 +18,7 @@ class Repository {
   });
 }
 
+/// Datasource katmanı oluşturmak için kullanılır
 class Datasource {
   final String methodName;
   final String paramName;
@@ -28,6 +31,7 @@ class Datasource {
   });
 }
 
+/// Usecase katmanı oluşturmak için kullanılır
 class Usecase {
   final String methodName;
   final String paramName;
@@ -40,6 +44,7 @@ class Usecase {
   });
 }
 
+/// Bloc katmanı oluşturmak için kullanılır
 class Bloc {
   final String paramName;
   final String paramType;
