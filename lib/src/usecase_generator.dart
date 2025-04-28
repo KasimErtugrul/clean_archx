@@ -38,7 +38,9 @@ class ${baseName}Usecase extends BaseUseCase<$entityName?, $paramType> {
 }
 ''';
 
-    final formatter = DartFormatter();
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion
+    );
     return formatter.format(usecaseCode);
   }
 }

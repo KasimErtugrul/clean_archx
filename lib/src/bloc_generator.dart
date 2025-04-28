@@ -7,13 +7,18 @@ import 'package:dart_style/dart_style.dart';
 class BlocGenerator extends GeneratorForAnnotation<Bloc> {
   @override
   Future<String> generateForAnnotatedElement(
-      Element element, ConstantReader annotation, BuildStep buildStep) async {
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async {
     final classElement = element as ClassElement;
     final className = classElement.name;
     final baseName = className.replaceAll('Model', '');
     final entityName = '${baseName}Entity';
 
-    final paramName = annotation.read('paramName').stringValue ?? '${baseName.toLowerCase()}Id';
+    final paramName =
+        annotation.read('paramName').stringValue ??
+        '${baseName.toLowerCase()}Id';
     final paramType = annotation.read('paramType').stringValue ?? 'int';
 
     // Bloc file
@@ -92,7 +97,9 @@ class ${baseName}State extends Equatable {
 }
 ''';
 
-    final formatter = DartFormatter();
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+    );
     return formatter.format('$blocCode\n$eventCode\n$stateCode');
   }
 }
@@ -101,8 +108,5 @@ class Bloc {
   final String paramName;
   final String paramType;
 
-  const Bloc({
-    this.paramName = 'id',
-    this.paramType = 'int',
-  });
+  const Bloc({this.paramName = 'id', this.paramType = 'int'});
 }

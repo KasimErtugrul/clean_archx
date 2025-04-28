@@ -64,7 +64,9 @@ class ${baseName}RepositoryImpl implements ${baseName}Repository {
 }
 ''';
 
-    final formatter = DartFormatter();
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion
+    );
     return formatter.format('$abstractRepoCode\n$repoImplCode');
   }
 }

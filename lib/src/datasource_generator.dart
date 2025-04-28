@@ -54,7 +54,9 @@ class ${baseName}RemoteDatasourceImpl implements ${baseName}RemoteDatasource {
 }
 ''';
 
-    final formatter = DartFormatter();
+    final formatter = DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion
+    );
     return formatter.format('$abstractDatasourceCode\n$datasourceImplCode');
   }
 }
